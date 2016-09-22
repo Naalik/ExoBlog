@@ -5,6 +5,8 @@
  */
 package blogtest.test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,9 +15,10 @@ import static org.junit.Assert.*;
  * @author admin
  */
 public class BlogTest {
-    
+
     @Test
     public void BlogTest() {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
     }
-    
+
 }

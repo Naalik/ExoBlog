@@ -6,10 +6,16 @@
 package blog.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,6 +28,18 @@ public class Util implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @OneToMany(mappedBy = "util")
+    private List<Article> articles = new ArrayList<>();
+    @OneToMany(mappedBy = "util")
+    private List<Page> pages = new ArrayList<>();
+    @OneToMany(mappedBy = "util")
+    private List<Commentaire> commentaires = new ArrayList<>();
+    @OneToMany(mappedBy = "util")
+    private List<Message> messages = new ArrayList<>();
+    @ManyToMany(mappedBy = "utils")
+    private List<Message> tousMessages = new ArrayList<>();
+    @OneToOne(mappedBy = "util")
+    private NumSecu numSecu;
 
     public Long getId() {
         return id;
